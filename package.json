@@ -11,5 +11,8 @@
     "javascript"
   ],
   "author": "Jose Alberto Platzi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
