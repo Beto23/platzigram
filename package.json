@@ -1,0 +1,15 @@
+{
+  "name": "platzigram",
+  "version": "0.1.0",
+  "description": "Comparte tus fotos estudiando en Platzi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "platzi",
+    "javascript"
+  ],
+  "author": "Jose Alberto Platzi",
+  "license": "MIT"
+}
