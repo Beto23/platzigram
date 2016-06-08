@@ -8,11 +8,11 @@ var config = {
   styles:{
     main: './assets/styles/index.scss',
     watch: './assets/styles/**/*.scss',
-    output: './public/css'
+    output: './public/'
   },
   images: {
-  main: ['./assets/img/**/*.jpg','./assets/img/**/*.png'],
-  output: './public/img',
+  main: ['./assets/img/*'],
+  output: './public/',
   watch: ['./assets/img/**/*.jpg','./assets/img/**/*.png']
   }
 };
