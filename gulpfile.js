@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
+var rename = require('gulp-rename');
 
 var config = {
   styles:{
@@ -25,6 +26,7 @@ gulp.task('styles', function(){
   gulp
     .src(config.styles.main)
     .pipe(sass())
+    .pipe(rename('app.css'))
     .pipe(gulp.dest(config.styles.output));
 });
 
