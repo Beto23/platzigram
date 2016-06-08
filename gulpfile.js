@@ -6,14 +6,14 @@ var rename = require('gulp-rename');
 
 var config = {
   styles:{
-    main: './src/styles/index.scss',
-    watch: './src/styles/**/*.scss',
+    main: './assets/styles/index.scss',
+    watch: './assets/styles/**/*.scss',
     output: './public/css'
   },
   images: {
-  main: ['./src/img/**/*.jpg','./src/img/**/*.png'],
+  main: ['./assets/img/**/*.jpg','./assets/img/**/*.png'],
   output: './public/img',
-  watch: ['./src/img/**/*.jpg','./src/img/**/*.png']
+  watch: ['./assets/img/**/*.jpg','./assets/img/**/*.png']
   }
 };
 
