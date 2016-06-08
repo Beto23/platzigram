@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
 var config = {
   styles:{
@@ -11,7 +13,12 @@ var config = {
 		main: './src/index.html',
 		watch: './src/*.html',
 		output: './public'
-	}
+	},
+  images: {
+  main: ['./src/img/**/*.jpg','./src/img/**/*.png'],
+  output: './public/img',
+  watch: ['./src/img/**/*.jpg','./src/img/**/*.png']
+  }
 };
 
 gulp.task('styles', function(){
@@ -27,4 +34,15 @@ gulp.task('html', function(){
    .pipe(gulp.dest(config.html.output));
 });
 
-gulp.task('default', ['styles', 'html']);
+gulp.task('img', function(){
+ return gulp
+   .src(config.images.main)
+   .pipe(imagemin({
+     progressive: true,
+     svgoPlugins: [{removeViewBox: false}],
+     use: [pngquant()]
+   }))
+   .pipe(gulp.dest(config.images.output));
+});
+
+gulp.task('default', ['styles', 'html', 'img']);
