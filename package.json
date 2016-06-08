@@ -4,7 +4,8 @@
   "description": "Comparte tus fotos estudiando en Platzi",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp",
+    "start": "gulp watch & node server.js"
   },
   "keywords": [
     "platzi",
@@ -26,6 +27,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.1",
     "imagemin-pngquant": "^5.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   }
 }
