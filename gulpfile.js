@@ -10,11 +10,6 @@ var config = {
     watch: './src/styles/**/*.scss',
     output: './public/css'
   },
-  html: {
-		main: './src/index.html',
-		watch: './src/*.html',
-		output: './public'
-	},
   images: {
   main: ['./src/img/**/*.jpg','./src/img/**/*.png'],
   output: './public/img',
@@ -30,12 +25,6 @@ gulp.task('styles', function(){
     .pipe(gulp.dest(config.styles.output));
 });
 
-gulp.task('html', function(){
- return gulp
-   .src(config.html.main)
-   .pipe(gulp.dest(config.html.output));
-});
-
 gulp.task('img', function(){
  return gulp
    .src(config.images.main)
@@ -47,4 +36,4 @@ gulp.task('img', function(){
    .pipe(gulp.dest(config.images.output));
 });
 
-gulp.task('default', ['styles', 'html', 'img']);
+gulp.task('default', ['styles','img']);
