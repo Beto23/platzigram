@@ -1,4 +1,4 @@
-$secundary-color: 125688;
+$secondary-color: #125688;
 
 @import "node_modules/materialize-css/sass/materialize.scss";
 body {
@@ -55,9 +55,4 @@ body {
 
 .signup-form .btn.btn-signup {
   background-color: #125688;
-}
-
-input:focus{
-  border-bottom: 1px solid #4090DB !important;
-  box-shadow: 0 1px 0 0 #4090DB !important;
 }
