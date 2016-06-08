@@ -6,6 +6,8 @@ var rename = require('gulp-rename');
 var babel = require('babelify');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+
 
 
 
@@ -46,13 +48,31 @@ gulp.task('img', function(){
    .pipe(gulp.dest(config.images.output));
 });
 
-gulp.task('scripts', function() {
-  browserify(config.scripts.main)
-    .transform(babel)
-    .bundle()
-    .pipe(source('index.js'))
-    .pipe(rename('app.js'))
-    .pipe(gulp.dest(config.scripts.output));
+function compile(watch){
+  var bundle = watchify(browserify(config.scripts.main, {debug: true}));
+
+  function rebundle(){
+    bundle
+      .transform(babel)
+      .bundle()
+      .pipe(source('index.js'))
+      .pipe(rename('app.js'))
+      .pipe(gulp.dest(config.scripts.output));
+  }
+  if (watch) {
+    bundle.on('update', function(){
+      console.log('--> Bundling...');
+      rebundle();
+    });
+  }
+  rebundle();
+}
+
+gulp.task('build', function () {
+  return compile();
 });
 
-gulp.task('default', ['styles','img', 'scripts']);
+gulp.task('watch', function () { return compile(true); });
+
+
+gulp.task('default', ['styles','img', 'build']);
