@@ -9,7 +9,15 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 
-
+function beep(){
+	console.log("beep");
+	var exec = require('child_process').exec;
+	exec('canberra-gtk-play --file=/usr/share/sounds/ubuntu/notifications/Mallet.ogg');
+}
+var onError = function(err) {
+	beep();
+	console.log(err.toString());
+};
 
 
 var config = {
@@ -33,6 +41,10 @@ var config = {
 gulp.task('styles', function(){
   gulp
     .src(config.styles.main)
+    .on('error', function (err) {
+			onError(err);
+			this.emit("end");
+		})
     .pipe(sass())
     .pipe(rename('app.css'))
     .pipe(livereload())
@@ -58,7 +70,7 @@ function compile(watch){
     bundle
       .transform(babel)
       .bundle()
-      .on('error', function(err){ console.log(err); this.emit('end');  })
+      .on('error', function(err){ onError(err); this.emit('end');  })
       .pipe(source('index.js'))
       .pipe(rename('app.js'))
       .pipe(livereload())
