@@ -1,6 +1,8 @@
 var express = require('express');
-
+var livereload = require('express-livereload');
 var app = express();
+
+livereload(app, config={});
 
 app.set('view engine', 'pug');
 
