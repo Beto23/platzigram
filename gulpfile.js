@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var livereload = require('gulp-livereload');
 var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
@@ -34,6 +35,7 @@ gulp.task('styles', function(){
     .src(config.styles.main)
     .pipe(sass())
     .pipe(rename('app.css'))
+    .pipe(livereload())
     .pipe(gulp.dest(config.styles.output));
 });
 
@@ -45,6 +47,7 @@ gulp.task('img', function(){
      svgoPlugins: [{removeViewBox: false}],
      use: [pngquant()]
    }))
+   .pipe(livereload())
    .pipe(gulp.dest(config.images.output));
 });
 
@@ -58,6 +61,7 @@ function compile(watch){
       .on('error', function(err){ console.log(err); this.emit('end');  })
       .pipe(source('index.js'))
       .pipe(rename('app.js'))
+      .pipe(livereload())
       .pipe(gulp.dest(config.scripts.output));
   }
   if (watch) {
@@ -73,7 +77,11 @@ gulp.task('build', function () {
   return compile();
 });
 
-gulp.task('watch', function () { return compile(true); });
+gulp.task('watch', function () {
+  gulp.watch(config.images.watch, ['img']);
+  gulp.watch(config.styles.watch, ['styles']);
+  compile(true);
+});
 
 
-gulp.task('default', ['styles','img', 'build']);
+gulp.task('default', ['styles','img', 'build', 'watch']);
