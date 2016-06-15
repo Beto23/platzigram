@@ -14,8 +14,8 @@ page('/', function (ctx, next) {
         avatar: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/1185631_627964767253159_486476512_n.jpg?oh=dbe01a246b201026a38bfd9737847d8e&oe=580DF6EC'
       },
       url: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/1014210_546510868731883_2130914507_n.jpg?oh=a2ef25f9a4257a0d3b65deba123f02ac&oe=5809AE5A',
-      likes: 10,
-      liked: true,
+      likes: 0,
+      liked: false,
       createdAt: new Date()
     },
     {
@@ -24,10 +24,10 @@ page('/', function (ctx, next) {
         avatar: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/1185631_627964767253159_486476512_n.jpg?oh=dbe01a246b201026a38bfd9737847d8e&oe=580DF6EC'
       },
       url: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/1014210_546510868731883_2130914507_n.jpg?oh=a2ef25f9a4257a0d3b65deba123f02ac&oe=5809AE5A',
-      likes: 2,
+      likes: 1,
       liked: true,
       createdAt: new Date().setDate(new Date().getDate() - 10)
-      
+
     }
   ];
 
