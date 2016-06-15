@@ -15,7 +15,8 @@ page('/', function (ctx, next) {
       },
       url: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/1014210_546510868731883_2130914507_n.jpg?oh=a2ef25f9a4257a0d3b65deba123f02ac&oe=5809AE5A',
       likes: 10,
-      liked: true
+      liked: true,
+      createdAt: new Date()
     },
     {
       user: {
@@ -24,7 +25,9 @@ page('/', function (ctx, next) {
       },
       url: 'https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/1014210_546510868731883_2130914507_n.jpg?oh=a2ef25f9a4257a0d3b65deba123f02ac&oe=5809AE5A',
       likes: 2,
-      liked: true
+      liked: true,
+      createdAt: new Date().setDate(new Date().getDate() - 10)
+      
     }
   ];
 
